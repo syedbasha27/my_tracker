@@ -1,0 +1,16 @@
+{
+  "name": "Towards Dev",
+  "short_name": "TowardsDev",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "description": "Smart daily task tracker for GATE + AIML grind",
+  "icons": [
+    {
+      "src": "https://api.iconify.design/noto:lightning.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}
