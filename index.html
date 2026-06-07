@@ -6,6 +6,9 @@
   <title>Towards Dev</title>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#0f172a" />
+  <button id="installBtn" style="display:none;">
+  Install App
+</button>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1068,6 +1071,24 @@ setInterval(() => {
   const now = new Date();
   if (now.getHours() === 0 && now.getMinutes() === 0) render();
 }, 60000);
+  let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  document.getElementById('installBtn').style.display = 'block';
+});
+
+document.getElementById('installBtn').addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+
+  deferredPrompt = null;
+  document.getElementById('installBtn').style.display = 'none';
+});
 </script>
 </body>
 </html>
